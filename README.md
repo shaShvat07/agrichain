@@ -71,17 +71,30 @@ The application will be available at http://localhost:5173
 - `services/`: API service calls
 - `context/`: React context for state management
 
-## Deployment
+## Chaincode Deployment and proper setup
 
 For production deployment, build the frontend and serve it through the Express backend:
 
 ```bash
-# Build the frontend
-cd client
-npm run build
-
-# Start the production server
-cd ../server
-npm start
-```# agrichain
-# agrichain
+# Clone the repository
+git clone https://github.com/shaShvat07/agrichain.git
+cd agrichain
+# Clone the hyperledger fabric test network
+git clone https://github.com/hyperledger/fabric-samples
+# Start Hyperledger Fabric test network
+cd fabric - samples / test - network
+./ network . sh up createChannel - ca
+./ network . sh deployCC - ccn product - registry - ccp ../../ server /
+chaincode / product - registry - ccl javascript
+# Initialize the backend
+cd ../../ server
+npm install
+cd scripts
+node scripts / enrollAdmin . js
+node scripts / registerUser . js
+cd ..
+npm run dev
+# Initialize the frontend
+cd ../ client
+npm install
+npm run dev
